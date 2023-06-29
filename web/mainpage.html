@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Client Page</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap" rel="stylesheet"> 
+    </head>
+
+    <body style="display: flex; flex-direction: row;">
+
+        <!-- Server Connect Box -->
+        <div id="serverconnect" style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); display: flex; flex-direction: column; background-color: var(--bgcolor); padding: 20px 40px 20px 40px; align-items: center; border-style: solid; border-width: 1px;">
+            
+            <div style="display: flex; margin-top: 10px;">
+                <div style="display: flex; flex-direction: column; align-items: center;">
+                    <p style="margin-bottom: 10px;">SERVER ADDRESS</p>
+                    <input style=" max-width:15vh; border-color: var(--primcolor); border-style: solid; border-width: 1px; font-size: 15px; outline: none; padding-left: 5px; padding-right: 5px; background-color: #1E1F1E; height: 30px; color: var(--primcolor);" type="text" placeholder="" id="ipinput">
+                </div>
+                    
+                <div style="margin-left: 10px; display: flex; flex-direction: column; align-items: center;">
+                    <p style="margin-bottom: 10px;">PORT</p>
+                    <input style=" max-width:8vh; border-color: var(--primcolor); border-style: solid; border-width: 1px; font-size: 15px; outline: none; padding-left: 5px; padding-right: 5px; background-color: #1E1F1E; height: 30px; color: var(--primcolor);" type="text" placeholder="" id="portinput">
+                </div>
+            </div>
+
+            <span onclick="serverconnectbox(false)" class="material-symbols-outlined closeicon" style="margin-top: 0px; padding: 0px; border-style: solid; border-width: 1px; position: absolute; right: 5px; top: 5px;">close</span>
+            <p style="margin-top: 12px; padding: 5px; border-width: 1px; border-style: solid;" class="submiticon" onclick="connecttoserver()">CONNECT</p>
+        </div>
+        
+        <!-- Side Bar -->
+        <div style="min-width: 40vh; padding: 5px; display: flex; flex-direction:column; gap: 0px; border-width: 1px; border-style: solid; height: 98vh; background-color: #141514;">
+            
+            <div style="display: flex; border-width: 1px; border-style:none; width: 99%; padding: 0px; justify-content: center; border-color: var(--bgcolor); width: 100%;">
+                <p style="margin: 0px; padding: 5px;">DIRECT MESSAGES</p>
+            </div>
+
+            <hr style="color: var(--primcolor); margin-top: 3px; margin-bottom: 3px;">
+
+            <!-- Contacts -->
+            <div id="contactcontainer" style="overflow-y: scroll; max-height: 80%; height: 80%;">
+            </div>
+
+            <hr style="color: var(--primcolor); margin-top: 3px; margin-bottom: 3px;">
+
+            <!-- Add Contacts -->
+            <div style="border-width: 1px; border-style: solid; padding: 10px;">
+                <div style="display: flex; align-items: center;">
+                    <div style="background-color: #141514;
+                    background-color: #141514;
+                    opacity: 0.8;
+                    background-image: radial-gradient(var(--primcolor) 0.2px, #141514 0.2px);
+                    background-size: 4px 4px;
+                    height: 15px; width: 100%"></div>
+                    <p style="margin-right: 8px; margin-left: 8px; min-width: 80px">BEGIN CHAT</p>
+                    <div style="background-color: #141514;
+                    background-color: #141514;
+                    opacity: 0.8;
+                    background-image: radial-gradient(var(--primcolor) 0.2px, #141514 0.2px);
+                    background-size: 4px 4px;
+                    height: 15px; width: 100%;"></div>
+                </div>
+                <div style="padding-top: 10px;padding-bottom: 10px; display: flex; align-items: center;">
+                    <p>ID</p>
+                    <input id="contactid" style="margin-left:10px; border-color: var(--primcolor); border-style: solid; border-width: 1px; font-size: 15px; outline: none; padding-left: 5px; padding-right: 5px; background-color: #1E1F1E; height: 30px; color: var(--primcolor);" type="text" placeholder="">
+                    <span onclick="addcontactrequest()" class="material-symbols-outlined submiticon" style="margin-left: 5px; border-width: 1px; border-style: solid; padding: 3px;">add</span>
+                    <span onclick="serverconnectbox(true)" id='b' class="material-symbols-outlined neturalicon" style="margin-left: 5px; border-width: 1px; border-style: solid; padding: 3px; font-size: 23px;">settings</span>
+                </div>
+            </div>
+
+            <div style="border-style: solid; border-width: 1px;margin-top: 5px;padding: 5px; padding-top: 10px;padding-bottom: 10px; display: flex; align-items: center; justify-content: space-around; ">
+                <p>USERNAME</p>
+                <input id="usernameinput" style="margin-left:10px; border-color: var(--primcolor); border-style: solid; border-width: 1px; font-size: 15px; outline: none; padding-left: 5px; padding-right: 5px; background-color: #1E1F1E; height: 30px; color: var(--primcolor);" type="text" placeholder="">
+                <span id="usernamesyncicon" class="material-symbols-outlined submiticon" style="font-size: 25px; margin-left: 1px; border: 1px solid; padding: 2px;">sync</span>
+            </div>
+
+            <!-- User Info/Settings -->
+            <div style="border-style: solid; border-width: 1px;margin-top: 5px;padding: 5px; padding-top: 10px;padding-bottom: 10px; display: flex; align-items: center; justify-content: space-around; ">
+
+                <div style="display: flex; align-items: center;">
+                    <p style="margin-left: 5px;">YOUR ID:</p>
+                    <p id="IDtag" style="margin: 0px 0px 0px 5px; border-style: solid; border-width: 1px; padding: 5px;">----</p>
+                </div>
+    
+                <div style="width: 1px; height: 32px; background-color: var(--primcolor);"></div>
+    
+                <div id="connectionstatuscontainer" style="margin-left:0px; margin-right: 2px; display: flex; align-items: center; border-width: 1px; border-style: solid; padding: 2px; background-color:#FB3640; color: var(--bgcolor); border-color: #FB3640">
+                    <p id="connectionstatustext" style="margin-left: 7px;">Not Connected</p>
+                    <span id="connectionstatusicon" class="material-symbols-outlined" style=" font-size: 25px; margin-left: 7px;">conversion_path_off</span>
+                </div>
+            
+            </div>
+
+        </div>
+
+        <!-- Background Pattern -->
+        <div id='bgpt' style="position: absolute; height: 100%; width: 100%; z-index: -2;">
+        </div>
+
+
+        <!-- Chat Space -->
+        <div style="display: flex; flex-direction: column; width: 100%;">
+            
+            <!-- Messages -->
+            <div id="messagecontainer" style="height: 91.1vh; overflow-y: scroll; margin-bottom: 15px; ">
+
+            </div>
+
+            <!-- Message Bar -->
+            <div style="display: flex;">
+                <div style="width: 155vh; background-color: #141514; border-width: 1px; border-style: solid; margin-left: 5px;" id="msginputcontainer">  
+                    <input style="width: 95%; font-size: 15px; outline: none; border-style: none; padding: 10px; background-color: #141514; height: 25px; color: var(--primcolor);" type="text" id="messageinput" name="fname" placeholder="Enter Message" spellcheck='false' autocorrect='off'>
+                </div>
+                <span id="sendmsg" class="material-symbols-outlined icon" style="margin-left: 5px; font-size: 30px; border-style: solid ; border-width: 1px; padding: 7.5px; background-color: #141514;">arrow_right_alt</span>
+            </div>
+
+        </div>
+
+    </body>
+
+</html>
+
+<!-- Templates -->
+
+<!-- Contact Template -->
+<template id="ContactTemplate">
+    <div style="margin-bottom: 2.5px; margin-top: 2.5px; display: flex; width: 99%; max-width: 40vh; height: fit-content; justify-content: space-between; align-items: center;" >
+                    
+        <div  class="contact" id='contacthighlight' style="width: 100%; border: 1px solid var(--primcolor); margin-right: 3px;">
+            <div style="display:flex; height: fit-content; padding: 2.2px; align-items:center;    ">
+                <span style="margin-left: 2.5px; font-size: 25px;grid-row: 1/1; font-variation-settings: 'FILL' 1,'wght' 300,'GRAD' -25;" class="material-symbols-outlined checkbutton">radio_button_unchecked</span>
+                <p style="margin-left: 10px;" class="username">USERNAME</p>
+                <p class="id" style="font-size: 18px; margin: 2px; margin-left: 10px; padding: 4px;grid-row: 1; width: fit-content;">2523</p>
+            </div>
+        </div>
+
+        <span class="material-symbols-outlined closeicon" style="font-size: 20px; margin-top: 0px; padding: 7.5px; border: 1px solid #FB3640; height: 100%;">close</span>
+    
+    </div>
+</template>
+
+<!-- Recieve Message Template -->
+<template id="RecvMessageTemplate">
+    <div style="max-width: 40%; background-color: #141514; margin-left: 15px; margin-top: 15px; display: flex; align-items: center; width: fit-content; border-style: solid; border-width: 1px; padding: 10px;">
+        <p class="message">Lorem Ipsum Dolor Sit Amet</p> 
+        <p class="time" style="margin-left: 20px; font-size: 13px; background-color: #1F1F1F; padding: 3px;">04:00</p>
+    </div>
+</template>
+
+<!-- Send Message Template -->
+<template id="SendMessageTemplate">
+    <div style="display: flex; justify-content: end;">
+        <div style="background-color: #141514; max-width: 40%; margin-right: 25px; margin-top: 15px; display: flex; align-items: center; justify-content: flex-end; border-style: solid; border-width: 1px; padding: 10px;">
+            <p class="time" style="font-size: 13px;background-color: #1F1F1F; padding: 3px;">04:00</p>
+            <p class='message' style="margin-left: 20px;">Lorem Ipsum Dolor Sit Amet</p>
+        </div>
+    </div>
+</template>
+
+<script type="text/javascript" src="eel.js"></script>
+<script src="mainscript.js"></script>

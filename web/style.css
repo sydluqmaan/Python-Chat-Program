@@ -1,0 +1,143 @@
+:root{
+    --primcolor:#DBD5B5;
+    --bgcolor:#141514;
+    --primgreen: #00af54;
+    --primred: #FB3640;
+    --primgray: #605F5E;
+}
+
+*{
+    font-family: 'Ubuntu Mono', monospace;
+    user-select: none;
+    padding: 0;
+    margin: 0;
+}
+
+body{
+    max-height: 100vh;
+    margin: 0px;
+    color: var(--primcolor);
+    background-color: var(--bgcolor);
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 1,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 40
+}
+
+.icon{
+    font-variation-settings:'FILL' 1,'wght' 400,'GRAD' 0,'opsz' 48; font-size: 35px; margin-left: 10px; margin-right:10px;
+}
+
+.icon:hover{
+    font-variation-settings:'FILL' 1,'wght' 400,'GRAD' 0,'opsz' 48; font-size: 35px; margin-left: 10px; margin-right:10px;
+    color:#00AF54;
+}
+
+.icon:active{
+    /* color:#141514; */
+    color:#00E06C;
+}
+
+.contact:hover{
+    background-color:#1E1F1E;
+}
+
+.contact:active{
+    background-color: #282A28;
+}
+
+.submiticon{
+    color: #00AF54;
+    background-color: #141514;
+    border-color: #00AF54;
+}
+
+.submiticon:hover{
+    color: #141514;
+    background-color: #00AF54;
+    border-color: #00AF54;
+}
+
+.submiticon:active{
+    color: #141514;
+    background-color: #00E06C;
+    border-color: #00E06C;
+}
+
+.neturalicon{
+    color: var(--primcolor);
+    background-color: var(--bgcolor);
+    border-color: var(--primcolor);
+}
+
+.neturalicon:hover{
+    color: var(--bgcolor);
+    background-color: var(--primcolor);
+    border-color: var(--primcolor);
+}
+
+.neturalicon:active{
+    color: var(--bgcolor);
+    background-color: #EBE8D6;
+    border-color: #EBE8D6;
+}
+
+.closeicon{
+    color: #FB3640;
+    background-color: #141514;
+    border-color: #FB3640;
+
+}
+
+.closeicon:hover{
+    color: #141514;
+    background-color: #FB3640;
+    border-color: #FB3640;
+    border-width: 0px;
+}
+
+.closeicon:active{
+    color: #141514;
+    background-color: #FB232E;
+    border-color: #FB232E;
+    border-width: 0px;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+}
+  
+/* Track */
+::-webkit-scrollbar-track {
+  background: #1E1E1E;
+}
+  
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #DBD5B5;
+}
+  
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #dbd5b584;
+}
+
+#bgpt{
+    background-color: #141514;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25' viewBox='0 0 1600 800'%3E%3Cg fill-opacity='.4'%3E%3Cpolygon fill='%233c3b34' points='1600 160 0 460 0 350 1600 50'/%3E%3Cpolygon fill='%23646254' points='1600 260 0 560 0 450 1600 150'/%3E%3Cpolygon fill='%238b8875' points='1600 360 0 660 0 550 1600 250'/%3E%3Cpolygon fill='%23b3af95' points='1600 460 0 760 0 650 1600 350'/%3E%3Cpolygon fill='%23DBD5B5' points='1600 800 0 800 0 750 1600 450'/%3E%3C/g%3E%3C/svg%3E");
+    background-attachment: fixed;
+    background-size: cover;
+    /* background by SVGBackgrounds.com */
+}
+
+#serverconnect{
+    visibility: hidden;
+}
