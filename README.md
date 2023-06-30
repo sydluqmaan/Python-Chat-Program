@@ -1,5 +1,5 @@
 # Chat-Program
-A python chat application to communicate over LAN. Server and client code written in python, uses the Eel python library for a browser GUI. <br />
+A python chat application to communicate over LAN. Server and client code written in python, uses the socket library for network communication and the Eel library for a browser GUI. <br />
 
 ![ChatProgram1](https://github.com/sydluqmaan/Python-Chat-Program/assets/138065925/662b21eb-9cf9-4027-b5da-56017df1430d)
 
